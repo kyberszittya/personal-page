@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.infoContainer {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .subtitle {
+    font-size: 1.8rem;
+    margin-top: 20px;
+  }
+  
