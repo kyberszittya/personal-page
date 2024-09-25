@@ -1,0 +1,9 @@
+### POST request to example server
+POST localhost:8000/api/contact
+Content-Type: application/json
+
+{
+  "key1": "value1",
+  "key2": "value2"
+}
+###
