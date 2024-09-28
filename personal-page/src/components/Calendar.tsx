@@ -12,8 +12,8 @@ interface CalendarProps {
 
 const BlogCalendar: React.FC<CalendarProps> = ({ highlightedDates, onDateClick}) => {
     const [currentDate, setCurrentDate] = useState(new Date());
-    // Get the current month, year, and days in the month
-    const month = format(currentDate, 'MM');
+    // Get the current month, year, and days in the month    
+    const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currentDate);
     const year = format(currentDate, 'yyyy');
     const daysInMonth = getDaysInMonth(currentDate);
     const startDay = startOfMonth(currentDate).getDay();

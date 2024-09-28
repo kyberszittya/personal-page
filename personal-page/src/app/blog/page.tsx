@@ -4,20 +4,18 @@ import BlogCalendar from '@/components/Calendar'
 // Get data from file
 //import blogData from '@/data/blogData.json';
 import Navbar from '@/components/Navbar';
-import { format, formatDate, parseISO } from 'date-fns';
+import { format, parseISO } from 'date-fns';
+import { BlogPost } from '@/models/BlogPost';
 
 
-const fetchBlogPosts = async () => {
-    const res = await fetch('http://localhost:8000/api/blogposts');
-    return res.json();
-}
+
 
 const BlogPage: React.FC = () => {    
     // Refs to each blog post (use a map to associate dates with refs)
     const postRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
     const [blogPosts, setBlogPosts] = useState([]);
-    const [loading, setLoading] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [shouldFetch, setShouldFetch] = useState(true);
     useEffect(() => {
         if (!shouldFetch) return;
@@ -25,13 +23,12 @@ const BlogPage: React.FC = () => {
             try {
                 const res = await fetch('http://localhost:8000/api/blogposts');
                 const data = await res.json()
-                const formattedPosts = data.map(post => ({
+                const formattedPosts = data.map((post: BlogPost) => ({
                     ...post,
                     date: format(parseISO(post.date), 'yyyy-MM-dd'), // Adjust as needed
                 }));
 
                 setBlogPosts(formattedPosts);
-                console.log(formatDate)
                 setShouldFetch(false);
             } catch(error) {
                 console.error('Error fetching blog posts:', error);
@@ -48,7 +45,7 @@ const BlogPage: React.FC = () => {
     }
 
     //const blogPosts = use(fetchBlogPosts());
-    const blogDates = blogPosts.map(post => post.date);
+    const blogDates = blogPosts.map((post: any) => post.date);
 
     // Scroll to the blog post when a calendar date is clicked
     const handleDateClick = (date: string) => {
@@ -70,7 +67,7 @@ const BlogPage: React.FC = () => {
                     {/* Other blog content */}
                     <div className="mt-8">
                         <h2 className="text-2xl font-semibold">Latest Posts</h2>
-                        {blogPosts.map((post) => (
+                        {blogPosts.map((post: any) => (
                         <div key={post.date} 
                             className="mb-6" 
                             ref={(el) => (postRefs.current[post.date] = el)}
