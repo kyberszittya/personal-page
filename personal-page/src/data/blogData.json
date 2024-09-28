@@ -1,0 +1,27 @@
+[
+    {
+      "title": "Day 0",
+      "date": "2024-09-24",
+      "content": "CubeMX and STMCubeIDE installed, uploaded blinking LED project to the board. Configured 108 MHz system clock. PB0 (GPIO) & PA0 (PWM output) used as configured pins. More information in the utility notebooks. Also get some fancy starting website with next.js (loving that framework)."
+    },
+    {
+      "title": "Day 1",
+      "date": "2024-09-25",
+      "content": "This day was a little tiring. Nevertheless: made some progress with creating a Spring Boot backend (with dummy security). Also started Projects page on Personal Page."
+    },
+    {
+      "title": "Day missed",
+      "date": "2024-09-26",
+      "content": "I was back in work and I had tremendous work, finished in the night. Today was unfortunately missed."
+    },
+    {
+        "title": "Day missed",
+        "date": "2024-09-27",
+        "content": "I was back in work at my second workplace (had a one day event till late night), so I missed this as I arived around midnight at home. Better do work with fresh mind."
+    },
+    {
+        "title": "Day 2",
+        "date": "2024-09-28",
+        "content": "Making calendar component work."
+    }
+  ]
