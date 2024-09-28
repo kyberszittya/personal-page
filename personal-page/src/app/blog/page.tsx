@@ -1,14 +1,54 @@
 "use client";
-import React, {useRef } from 'react';
+import React, {useRef, useEffect, useState } from 'react';
 import BlogCalendar from '@/components/Calendar'
 // Get data from file
-import blogData from '@/data/blogData.json';
+//import blogData from '@/data/blogData.json';
 import Navbar from '@/components/Navbar';
+import { format, formatDate, parseISO } from 'date-fns';
 
-const BlogPage: React.FC = () => {
-    const blogDates = blogData.map(post => post.date);
+
+const fetchBlogPosts = async () => {
+    const res = await fetch('http://localhost:8000/api/blogposts');
+    return res.json();
+}
+
+const BlogPage: React.FC = () => {    
     // Refs to each blog post (use a map to associate dates with refs)
     const postRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+    const [blogPosts, setBlogPosts] = useState([]);
+    const [loading, setLoading] = useState([]);
+    const [shouldFetch, setShouldFetch] = useState(true);
+    useEffect(() => {
+        if (!shouldFetch) return;
+        const fetchData = async () => {
+            try {
+                const res = await fetch('http://localhost:8000/api/blogposts');
+                const data = await res.json()
+                const formattedPosts = data.map(post => ({
+                    ...post,
+                    date: format(parseISO(post.date), 'yyyy-MM-dd'), // Adjust as needed
+                }));
+
+                setBlogPosts(formattedPosts);
+                console.log(formatDate)
+                setShouldFetch(false);
+            } catch(error) {
+                console.error('Error fetching blog posts:', error);
+            } finally {
+                setLoading(false);
+            }
+
+        };
+        fetchData();
+    }, [shouldFetch])
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    //const blogPosts = use(fetchBlogPosts());
+    const blogDates = blogPosts.map(post => post.date);
 
     // Scroll to the blog post when a calendar date is clicked
     const handleDateClick = (date: string) => {
@@ -30,7 +70,7 @@ const BlogPage: React.FC = () => {
                     {/* Other blog content */}
                     <div className="mt-8">
                         <h2 className="text-2xl font-semibold">Latest Posts</h2>
-                        {blogData.map((post) => (
+                        {blogPosts.map((post) => (
                         <div key={post.date} 
                             className="mb-6" 
                             ref={(el) => (postRefs.current[post.date] = el)}
@@ -52,5 +92,7 @@ const BlogPage: React.FC = () => {
         </div>
       );
 }
+
+
 
 export default BlogPage;
