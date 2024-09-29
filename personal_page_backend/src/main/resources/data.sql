@@ -3,4 +3,5 @@ INSERT INTO blog_post (id, title, date, content) VALUES
     (2, 'Day 1', '2024-09-25', 'This day was a little tiring. Nevertheless: made some progress with creating a Spring Boot backend (with dummy security). Also started Projects page on Personal Page.'),
     (3, 'Day missed', '2024-09-26', 'I was back in work and I had tremendous work, finished in the night. Today was unfortunately missed.'),
     (4, 'Day missed', '2024-09-27', 'I was back in work at my second workplace (had a one day event till late night), so I missed this as I arived around midnight at home. Better do work with fresh mind.'),
-    (5, 'Day 2', '2024-09-28', 'Making calendar component work.');
+    (5, 'Day 2', '2024-09-28', 'Making calendar component work.'),
+    (6, 'Day 3', '2024-09-29', 'Using PostgreSQL instead of H2.');

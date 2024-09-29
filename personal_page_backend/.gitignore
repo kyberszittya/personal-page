@@ -35,3 +35,5 @@ out/
 
 ### VS Code ###
 .vscode/
+/password.txt
+/src/main/resources/database.properties
