@@ -1,6 +1,7 @@
 "use client";
 
 import Navbar from '@/components/Navbar';
+import Link from 'next/link';
 import React from 'react';
 
 const Info: React.FC = () => {
@@ -23,7 +24,7 @@ const Info: React.FC = () => {
               </ul>
               I love solving complex problems and creating innovative solutions using cutting-edge technologies. 
               <br></br>
-              For example, here is my GPT buddy, called Tiwaz-A0, helping me through my endeavors: https://chatgpt.com/g/g-hxly0oNgz-tiwaz-a0
+              For example, here is my GPT buddy, called Tiwaz-A0, helping me through my endeavors: <Link href="https://chatgpt.com/g/g-hxly0oNgz-tiwaz-a0" className="text-blue hover:underline">Tiwaz-A0 ChatGPT persona</Link>
 
               <h2 className="text-2xl font-semibold">Education</h2>
               <p>
